@@ -1,4 +1,4 @@
-package com.cos.security1.auth;
+package com.cos.security1.config.auth;
 
 import com.cos.security1.model.User;
 import com.cos.security1.repository.UserRepository;
@@ -21,11 +21,14 @@ public class PrincipalDetailsService implements UserDetailsService {
    @Override
     // 매개변수의 username은 페이지에서 넘어오는 id값과 동일해야한다
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         User userEntity = userRepository.findByUsername(username);
+
         if(userEntity != null){
             // user가 있을 때 디테일 클래스를 리턴한다
             return new PrincipalDetails(userEntity);
         }
+
         return null;
     }
 }

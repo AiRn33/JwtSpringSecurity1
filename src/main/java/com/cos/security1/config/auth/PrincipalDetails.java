@@ -1,4 +1,4 @@
-package com.cos.security1.auth;
+package com.cos.security1.config.auth;
 
 // 시큐리티가 /login을 낚아채서 로그인을 진행시키고
 // 로그인 진행이 완료되면 session을 만들어준다(Security ContextHolder 에 저장)
@@ -7,21 +7,31 @@ package com.cos.security1.auth;
 // User 오브젝트 타입 = > UserDetails 타입 객체
 
 import com.cos.security1.model.User;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 // Security Session => Authentication 객체만 들어갈 수 있다는 걸 중요시하자
 // Authentication => UserDetails 객체만 들어갈 수 있다
 // 밑의 메소드와 같이 상속받으면 UserDetails의 역활을 할 수 있다
-public class PrincipalDetails implements UserDetails{
+@Data
+public class PrincipalDetails implements UserDetails, OAuth2User {
 
     private User user;
 
     public PrincipalDetails(User user){
         this.user = user;
+    }
+
+    // OAuth2User 오버라이딩 메소드
+    @Override
+    public Map<String, Object> getAttributes() {
+        return null;
     }
 
     // 해당 User의 권한을 리턴하는 곳!!
@@ -68,5 +78,11 @@ public class PrincipalDetails implements UserDetails{
         // 우리사이트에서 1년동안 회원이 로그인을 안할때 휴면회원을 할꺼면 entity에 로그인 데이터를 놔두고 해결할 수 있다
         // 현재시간 - 로그인 시간 = > 1년을 초과할 시 false로 리턴값을 받으면 된다
         return true;
+    }
+
+
+    @Override
+    public String getName() {
+        return null;
     }
 }

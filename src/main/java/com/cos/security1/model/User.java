@@ -29,8 +29,8 @@ public class User {
     private String email;
     private String role; //ROLE_USER, ROLE_ADMIN
     // OAuth를 위해 구성한 추가 필드 2개
-    private String provider;
-    private String providerId;
+    private String provider;    // 여기는 google
+    private String providerId;  // 여기는 google에서 사용하고 있는 ID가 들어간다
     @CreationTimestamp
     private Timestamp createDate;
 }
