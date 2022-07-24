@@ -57,9 +57,11 @@ public class IndexController {
         return "index";
     }
 
+    // Oauth, 일반 로그인 등 둘 다 로그인이 가능해졌다
+    // @AuthenticationPrincipal :
     @GetMapping("/user")
-    public @ResponseBody String user(){
-
+    public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails){
+        System.out.println("principalDetails : " + principalDetails.getUser());
         return "user";
     }
 

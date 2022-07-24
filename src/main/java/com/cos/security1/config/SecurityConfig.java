@@ -17,11 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 // secured 어노테이션 활성화, // preAuthorize 어노테이션 활성화
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Bean // 해당 메서드의 리턴 되는 오브젝트 값을 IoC에 등록해준다 간단하게 스프링 컨테이너에 올라감
-    public BCryptPasswordEncoder encodePwd(){
-        return new BCryptPasswordEncoder();
-    }
-
     @Autowired
     private PrincipalOauth2UserService principalOauth2UserService;
 
