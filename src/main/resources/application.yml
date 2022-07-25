@@ -32,22 +32,22 @@ spring:
       client:
         registration:
           google:
-            client-id: 984347637200-gl10v037ecpn5aofgr1rt1i4pubfia1m.apps.googleusercontent.com
-            client-secret: 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
+            client-id:
+            client-secret:
             scope:
               - email
               - profile
 
           facebook:
-            client-id: 746880506531310
-            client-secret: a7706f98656e4d292e156c6590f46ed2
+            client-id:
+            client-secret:
             scope:
               - email
               - public_profile
 
           naver:
-            client-id: K3EgXOxdBsFqXLsyF7_0
-            client-secret: FxBExu2zwS
+            client-id:
+            client-secret:
             scope:
               - name
               - email
